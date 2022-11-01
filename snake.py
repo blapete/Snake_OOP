@@ -3,6 +3,7 @@
 import pygame
 import random
 from constants import *
+from apple import *
 
 
 class Snake():
@@ -13,7 +14,7 @@ class Snake():
     RIGHT = 'right'
     HEAD = 0
 
-    def __init__(self, oApple, window):
+    def __init__(self, window, oApple):
         self.x = random.randint(5, CELLWIDTH - 6)
         self.y = random.randint(5, CELLHEIGHT - 6)
         self.direction = self.RIGHT

@@ -3,16 +3,17 @@ import sys
 import pygame
 from constants import *
 from snake import Snake
-from apple import Apple
+from apple import *
 
 
 class GameView():
 
-    def __init__(self, window, clock, oSnake, oApple, oScore, font):
+    def __init__(self, window, clock, oScore, font):
         self.window = window
         self.clock = clock
-        self.oSnake = oSnake
-        self.oApple = oApple
+        self.oApple = Apple()
+        self.oSnake = Snake(self.window, self.oApple)
+        
         self.oScore = oScore
         self.font = font
 
@@ -51,9 +52,9 @@ class GameView():
 
             self.oSnake.draw(self.window)
 
-            x = self.oApple.x * CELLSIZE
-            y = self.oApple.y * CELLSIZE
-            self.oApple.draw(self.window, x, y)
+            x = self.oSnake.oApple.x * CELLSIZE
+            y = self.oSnake.oApple.y * CELLSIZE
+            self.oSnake.oApple.draw(self.window, x, y)
 
 
             z = len(self.oSnake.wormCoords) - 3

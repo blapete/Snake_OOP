@@ -4,7 +4,6 @@ import sys
 import pygame
 from constants import *
 from snake import Snake
-from apple import Apple
 from game_view import *
 from start_view import *
 from end_view import *
@@ -22,14 +21,14 @@ class Controller():
         self.window = window
         self.clock = clock
         self.font = font
+
         self.status = 0
 
         self.oScore = Model()
-        self.oApple = Apple()
-        self.oSnake = Snake(self.oApple, self.window)
+        # self.oSnake = Snake(self.window)
 
         self.oStartView = StartView(self.window, self.font, self.clock)
-        self.oGameView = GameView(self.window, self.clock, self.oSnake, self.oApple, self.oScore, font)
+        self.oGameView = GameView(self.window, self.clock, self.oScore, self.font)
         self.oEndView = EndView(self.window)
 
         self.oView = self.oStartView
@@ -48,7 +47,6 @@ class Controller():
             sys.exit()
 
         keyUpEvents = pygame.event.get(pygame.KEYUP)
-        # print(keyUpEvents)
                   
         if len(keyUpEvents) == 0:
             return None
@@ -89,11 +87,7 @@ class Controller():
             
             if q == "Reset Game":
                 del self.oGameView.oSnake
-                del self.oGameView.oApple
-                # del self.oApple
-                self. oApple = Apple()
-                self.oGameView.oApple = Apple()
-                self.oGameView.oSnake = Snake(self.oApple, self.window)
+                self.oGameView.oSnake = Snake(self.window, self.oGameView.oApple)
                 break
 
 
@@ -110,8 +104,3 @@ class Controller():
                 print('5')
                 self.status = 0
                 break
-
-        # print('3')
-        # print('done')
-        # pygame.quit()
-        # sys.exit()
