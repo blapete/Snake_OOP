@@ -12,7 +12,7 @@ class StartView():
         self.font = font
         self.clock = clock
 
-    def draw(self, clock):
+    def draw(self):
         titleFont = pygame.font.Font('freesansbold.ttf', 50)
         titleSurf1 = titleFont.render('Snake game', True, WHITE)
         degrees1 = 0
@@ -21,7 +21,8 @@ class StartView():
 
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
-                    return False
+                    return 1
+                    # return False
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
