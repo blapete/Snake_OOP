@@ -53,9 +53,9 @@ class Controller():
         if len(keyUpEvents) == 0:
             return None
 
-        # if keyUpEvents[0].key == pygame.K_ESCAPE:
-            # pygame.quit()
-            # sys.exit()
+        if keyUpEvents[0].key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
 
         if len(keyUpEvents) != 0:
             return True
@@ -68,55 +68,49 @@ class Controller():
 
         self.oStartView.draw(self.window)
         
-        self.status = 1
+           
 
-        if self.status == 1:
-            print("status:", self.status)
+        while True:
 
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    self.oGameView.handleKeyEvents(event)
+
+            self.window.fill(BG_COLOR)
+
+            self.oSnake.update()
+
+            self.oGameView.draw()
+
+            q = self.oGameView.isGameOver()
             
+            if q == "Reset Game":
+                print(q)
+                print('The Snake:', self.oSnake)
+                del self.oSnake
+                self.oSnake = Snake(self.oApple, self.window)
+                print('The Snake deleted?:', self.oSnake)
+                self.oSnake = Snake(self.oApple, self.window)
+                self.oApple = Apple()
+                break
 
-            while True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
-                    elif event.type == pygame.KEYDOWN:
-                        self.oGameView.handleKeyEvents(event)
 
-                self.window.fill(BG_COLOR)
+        self.oEndView.draw()
+        self.drawPressKeyMsg()
+        pygame.display.update()
+        pygame.time.wait(500)
+        self.checkForKeyPress()
 
-                self.oSnake.update()
-
-                self.oGameView.draw()
-
-                q = self.oGameView.isGameOver()
-                if q == "Reset Game":
-                    print(q)
-                    print('The Snake:', self.oSnake)
-                    del self.oSnake
-                    self.oSnake = Snake(self.oApple, self.window)
-                    print('The Snake deleted?:', self.oSnake)
-                    self.oSnake = Snake(self.oApple, self.window)
-                    self.oApple = Apple()
-                    break
-
-        self.status = 2
-
-        if self.status == 2:
-            print("status:", self.status)
-            self.oEndView.draw()
-            self.drawPressKeyMsg()
-            pygame.display.update()
-            pygame.time.wait(500)
-            self.checkForKeyPress()
-
-            while True:
-                if self.checkForKeyPress():
-                    print('1')
-                    pygame.event.get()
-                    print('2')
-                    self.status = 0
-                    break
+        while True:
+            if self.checkForKeyPress():
+                print('4')
+                pygame.event.get()
+                print('5')
+                self.status = 0
+                break
 
         # print('3')
         # print('done')
