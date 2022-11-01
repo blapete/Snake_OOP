@@ -19,23 +19,25 @@ pygame.display.set_caption('Snake game')
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
 
+
 oController = Controller(window, clock, BASICFONT)
 
 
 while True:
     
     for event in pygame.event.get():
+        
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            oController.handleKeyEvents(event)
+            oController.handleEvent(event)
 
 
     oController.draw()
 
 
-    # pygame.display.update()
+    pygame.display.update()
 
 
-    # clock.tick(FRAMES_PER_SECOND)
+    clock.tick(FRAMES_PER_SECOND)

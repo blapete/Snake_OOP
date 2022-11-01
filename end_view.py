@@ -1,5 +1,6 @@
 
 
+import sys
 import pygame
 from constants import *
 
@@ -41,11 +42,11 @@ class EndView():
         self.window.blit(game, gameRect)
         self.window.blit(over, overRect)
         self.pressKeyMessage()
-        pygame.display.update()
-        pygame.time.wait(500)
-        self.checkKeydown()
-        while True:
-            if self.checkKeydown():
-                pygame.event.get()
-                return 0
-                # break
+        # # pygame.display.update()
+        # pygame.time.wait(500)
+
+        # self.checkKeydown()
+        # while True:
+        #     if self.checkKeydown():
+        #         pygame.event.get()
+        #         return 0
