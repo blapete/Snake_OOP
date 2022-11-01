@@ -55,71 +55,71 @@ oSnake = Snake()
 
 
 
-class Game():
+# class Game():
 
-    def __init__(self):
-        self.snake = Snake()
-        pass
+#     def __init__(self):
+#         self.snake = Snake()
+#         pass
 
-    def draw(self):
+#     def draw(self):
 
-        screen.fill(BG_COLOR)
-        oGameView.drawGrid(screen)
-        self.snake.drawWorm(screen)
+#         screen.fill(BG_COLOR)
+#         oGameView.drawGrid(screen)
+#         self.snake.drawWorm(screen)
 
-        x = oApple.x * CELLSIZE
-        y = oApple.y * CELLSIZE
-        oApple.draw(screen, x, y)
+#         x = oApple.x * CELLSIZE
+#         y = oApple.y * CELLSIZE
+#         oApple.draw(screen, x, y)
 
-        z = len(self.snake.wormCoords) - 3
-        oScore.drawScore(screen, BASICFONT, z)
+#         z = len(self.snake.wormCoords) - 3
+#         oScore.drawScore(screen, BASICFONT, z)
         
-        pygame.display.update()
-        clock.tick(FRAMES_PER_SECOND)
+#         pygame.display.update()
+#         clock.tick(FRAMES_PER_SECOND)
 
-    def resetGame(self):
-        del self.snake
-        self.snake = Snake()
-        oApple = Apple()
-        return True
+#     def resetGame(self):
+#         del self.snake
+#         self.snake = Snake()
+#         oApple = Apple()
+#         return True
 
-    def isGameOver(self):
-        if (self.snake.wormCoords[self.snake.HEAD]['x'] == -1 or self.snake.wormCoords[self.snake.HEAD]['x'] == CELLWIDTH or self.snake.wormCoords[self.snake.HEAD]['y'] == -1 or self.snake.wormCoords[self.snake.HEAD]['y'] == CELLHEIGHT):
-            return self.resetGame()
+#     def isGameOver(self):
+#         if (self.snake.wormCoords[self.snake.HEAD]['x'] == -1 or self.snake.wormCoords[self.snake.HEAD]['x'] == CELLWIDTH or self.snake.wormCoords[self.snake.HEAD]['y'] == -1 or self.snake.wormCoords[self.snake.HEAD]['y'] == CELLHEIGHT):
+#             return self.resetGame()
 
-        for wormBody in self.snake.wormCoords[1:]:
-            if wormBody['x'] == self.snake.wormCoords[self.snake.HEAD]['x'] and wormBody['y'] == self.snake.wormCoords[self.snake.HEAD]['y']:
-                return self.resetGame()
+#         for wormBody in self.snake.wormCoords[1:]:
+#             if wormBody['x'] == self.snake.wormCoords[self.snake.HEAD]['x'] and wormBody['y'] == self.snake.wormCoords[self.snake.HEAD]['y']:
+#                 return self.resetGame()
 
-    def run(self):
+#     def run(self):
 
 
-        while True:
-            oStartView.showStartScreen(screen, oController, clock, BASICFONT)
+#         while True:
+#             oStartView.showStartScreen(screen, oController, clock, BASICFONT)
            
-            while True:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
-                    elif event.type == pygame.KEYDOWN:
-                        oController.handleKeyEvents(event, self.snake)
+#             while True:
+#                 for event in pygame.event.get():
+#                     if event.type == pygame.QUIT:
+#                         pygame.quit()
+#                         sys.exit()
+#                     elif event.type == pygame.KEYDOWN:
+#                         oController.handleKeyEvents(event, self.snake)
 
-                self.snake.update(oApple)
+#                 self.snake.update(oApple)
 
-                self.draw()
+#                 self.draw()
                 
-                if self.isGameOver():
-                    break
+#                 if self.isGameOver():
+#                     break
 
             
-            oEndView.showGameOver(screen, oController, event, BASICFONT)
+#             oEndView.showGameOver(screen, oController, event, BASICFONT)
 
 
-game = Game()
-game.run()
-pygame.quit()
-sys.exit()
+# game = Game()
+# game.run()
+# pygame.quit()
+# sys.exit()
 
 
 
