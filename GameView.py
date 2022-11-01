@@ -8,12 +8,56 @@ from apple import Apple
 
 class GameView():
 
-    def __init__(self):
-        pass
+    def __init__(self, window, clock, oSnake, oApple, oScore, font):
+        self.window = window
+        self.clock = clock
+        self.oSnake = oSnake
+        self.oApple = oApple
+        self.oScore = oScore
+        self.font = font
 
-    def drawGrid(self, screen):
-        for x in range(0, WINDOW_WIDTH, CELLSIZE):  # draw vertical lines
-            pygame.draw.line(screen, DARKGRAY, (x, 0), (x, WINDOW_HEIGHT))
 
-        for y in range(0, WINDOW_HEIGHT, CELLSIZE):  # draw horizontal lines
-            pygame.draw.line(screen, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
+    def isGameOver(self):
+        if (self.oSnake.wormCoords[self.oSnake.HEAD]['x'] == -1 or self.oSnake.wormCoords[self.oSnake.HEAD]['x'] == CELLWIDTH or self.oSnake.wormCoords[self.oSnake.HEAD]['y'] == -1 or self.oSnake.wormCoords[self.oSnake.HEAD]['y'] == CELLHEIGHT):
+            return "Reset Game"
+
+        for wormBody in self.oSnake.wormCoords[1:]:
+            if wormBody['x'] == self.oSnake.wormCoords[self.oSnake.HEAD]['x'] and wormBody['y'] == self.oSnake.wormCoords[self.oSnake.HEAD]['y']:
+                return "Reset Game"
+
+
+    def handleKeyEvents(self, event):
+        if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.oSnake.direction != self.oSnake.RIGHT:
+            self.oSnake.direction = self.oSnake.LEFT
+        elif (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and self.oSnake.direction != self.oSnake.LEFT:
+            self.oSnake.direction = self.oSnake.RIGHT
+        elif (event.key == pygame.K_UP or event.key == pygame.K_w) and self.oSnake.direction != self.oSnake.DOWN:
+            self.oSnake.direction = self.oSnake.UP
+        elif (event.key == pygame.K_DOWN or event.key == pygame.K_s) and self.oSnake.direction != self.oSnake.UP:
+            self.oSnake.direction = self.oSnake.DOWN
+        elif event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+
+
+    def draw(self):
+            self.window.fill(BG_COLOR)
+
+            for x in range(0, WINDOW_WIDTH, CELLSIZE):  # draw vertical lines
+                pygame.draw.line(self.window, DARKGRAY, (x, 0), (x, WINDOW_HEIGHT))
+
+            for y in range(0, WINDOW_HEIGHT, CELLSIZE):  # draw horizontal lines
+                pygame.draw.line(self.window, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
+
+            self.oSnake.draw(self.window)
+
+            x = self.oApple.x * CELLSIZE
+            y = self.oApple.y * CELLSIZE
+            self.oApple.draw(self.window, x, y)
+
+
+            z = len(self.oSnake.wormCoords) - 3
+            self.oScore.drawScore(self.window, self.font, z)
+
+            pygame.display.update()
+            self.clock.tick(FRAMES_PER_SECOND)
