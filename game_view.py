@@ -13,12 +13,10 @@ class GameView():
         self.clock = clock
         self.oApple = Apple()
         self.oSnake = Snake(self.window, self.oApple)
-        
         self.oScore = oScore
         self.font = font
 
-
-    def isGameOver(self):
+    def checkGameOver(self):
         if (self.oSnake.wormCoords[self.oSnake.HEAD]['x'] == -1 or self.oSnake.wormCoords[self.oSnake.HEAD]['x'] == CELLWIDTH or self.oSnake.wormCoords[self.oSnake.HEAD]['y'] == -1 or self.oSnake.wormCoords[self.oSnake.HEAD]['y'] == CELLHEIGHT):
             return "Reset Game"
 
@@ -26,8 +24,7 @@ class GameView():
             if wormBody['x'] == self.oSnake.wormCoords[self.oSnake.HEAD]['x'] and wormBody['y'] == self.oSnake.wormCoords[self.oSnake.HEAD]['y']:
                 return "Reset Game"
 
-
-    def handleKeyEvents(self, event):
+    def handleKeys(self, event):
         if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.oSnake.direction != self.oSnake.RIGHT:
             self.oSnake.direction = self.oSnake.LEFT
         elif (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and self.oSnake.direction != self.oSnake.LEFT:
@@ -39,7 +36,6 @@ class GameView():
         elif event.key == pygame.K_ESCAPE:
             pygame.quit()
             sys.exit()
-
 
     def draw(self):
             self.window.fill(BG_COLOR)
@@ -58,7 +54,7 @@ class GameView():
 
 
             z = len(self.oSnake.wormCoords) - 3
-            self.oScore.drawScore(self.window, self.font, z)
+            self.oScore.draw(self.window, self.font, z)
 
             pygame.display.update()
             self.clock.tick(FRAMES_PER_SECOND)

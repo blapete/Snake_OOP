@@ -12,12 +12,10 @@ class StartView():
         self.font = font
         self.clock = clock
 
-
     def draw(self, clock):
         titleFont = pygame.font.Font('freesansbold.ttf', 50)
         titleSurf1 = titleFont.render('Snake game', True, WHITE)
         degrees1 = 0
-
 
         while True:
 

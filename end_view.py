@@ -10,8 +10,8 @@ class EndView():
         self.window = window
 
     def draw(self):
-        gameOverFont = pygame.font.Font('freesansbold.ttf', 150)
-        gameSurf = gameOverFont.render('Game', True, WHITE)
+        gameOver = pygame.font.Font('freesansbold.ttf', 150)
+        gameSurf = gameOver.render('Game', True, WHITE)
         overSurf = gameOverFont.render('Over', True, WHITE)
         gameRect = gameSurf.get_rect()
         overRect = overSurf.get_rect()
