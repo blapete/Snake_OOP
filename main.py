@@ -20,16 +20,6 @@ window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Wormy')
 BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
 
-oGameView = GameView()
-oEndView = EndView()
-oStartView = StartView()
-oScore = Model()
-oController = Controller()
-oEndView = EndView()
-oApple = Apple()
-oSnake = Snake()
- 
-
 
 
 oController = Controller(window, clock, BASICFONT)
@@ -48,3 +38,9 @@ while True:
 
 
     oController.draw()
+
+
+    # pygame.display.update()
+
+
+    # clock.tick(FRAMES_PER_SECOND)
