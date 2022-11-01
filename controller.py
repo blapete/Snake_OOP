@@ -65,9 +65,8 @@ class Controller():
 
     def draw(self):
 
-        if self.status == 0:
-            print("status:", self.status)
-            self.oStartView.draw(self.window)
+
+        self.oStartView.draw(self.window)
         
         self.status = 1
 
