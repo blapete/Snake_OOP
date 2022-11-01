@@ -1,7 +1,7 @@
 
 
 import pygame
-from Constants import *
+from constants import *
 
 
 # Model Class

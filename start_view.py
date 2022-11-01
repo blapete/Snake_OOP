@@ -2,7 +2,7 @@
 
 import sys
 import pygame
-from Constants import *
+from constants import *
 
 
 class StartView():

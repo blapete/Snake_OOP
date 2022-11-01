@@ -1,7 +1,7 @@
 
 import sys
 import pygame
-from Constants import *
+from constants import *
 from snake import Snake
 from apple import Apple
 

@@ -2,7 +2,7 @@
 
 import pygame
 import random
-from Constants import *
+from constants import *
 
 
 class Snake():

@@ -2,14 +2,13 @@
 
 import sys
 import pygame
-from Constants import *
+from constants import *
 from snake import Snake
 from apple import Apple
-from GameView import *
-from StartView import *
-from EndView import *
-from Model import *
-from Controller import *
+from game_view import *
+from start_view import *
+from end_view import *
+from model import *
 
 
 
