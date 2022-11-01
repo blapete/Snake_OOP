@@ -71,6 +71,7 @@ class Controller():
            
 
         while True:
+            print('------------------------------------------------------------')
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -81,7 +82,7 @@ class Controller():
 
             self.window.fill(BG_COLOR)
 
-            self.oSnake.update()
+            self.oGameView.oSnake.update()
 
             self.oGameView.draw()
 
@@ -90,10 +91,10 @@ class Controller():
             if q == "Reset Game":
                 print(q)
                 print('The Snake:', self.oSnake)
-                del self.oSnake
-                self.oSnake = Snake(self.oApple, self.window)
+                del self.oGameView.oSnake
+                self.oGameView.oSnake = Snake(self.oApple, self.window)
                 print('The Snake deleted?:', self.oSnake)
-                self.oSnake = Snake(self.oApple, self.window)
+                self.oGameView.oSnake = Snake(self.oApple, self.window)
                 self.oApple = Apple()
                 break
 
