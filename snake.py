@@ -23,9 +23,12 @@ class Snake():
 
     def update(self):
         
+        # print('1')
         if self.wormCoords[self.HEAD]['x'] == self.oApple.x and self.wormCoords[self.HEAD]['y'] == self.oApple.y:
             self.oApple.setNewLocation()
+            print('2')
         else:
+            # print('3')
             del self.wormCoords[-1] 
 
         if self.direction == self.UP:
