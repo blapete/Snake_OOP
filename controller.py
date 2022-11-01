@@ -66,14 +66,13 @@ class Controller():
     def draw(self):
 
         if self.status == 0:
+            print("status:", self.status)
             self.oStartView.draw(self.window)
         
-        print('-----------------')
         self.status = 1
-        print(self.status)
-
 
         if self.status == 1:
+            print("status:", self.status)
             self.window.fill(BG_COLOR)
             print('here')
             while True:
@@ -100,6 +99,7 @@ class Controller():
         self.status = 2
 
         if self.status == 2:
+            print("status:", self.status)
             self.oEndView.draw()
             self.drawPressKeyMsg()
             pygame.display.update()
