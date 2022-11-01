@@ -73,8 +73,9 @@ class Controller():
 
         if self.status == 1:
             print("status:", self.status)
-            self.window.fill(BG_COLOR)
-            print('here')
+
+            
+
             while True:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
@@ -83,6 +84,8 @@ class Controller():
                     elif event.type == pygame.KEYDOWN:
                         self.oGameView.handleKeyEvents(event)
 
+                self.window.fill(BG_COLOR)
+
                 self.oSnake.update()
 
                 self.oGameView.draw()
@@ -90,8 +93,10 @@ class Controller():
                 q = self.oGameView.isGameOver()
                 if q == "Reset Game":
                     print(q)
-                    print('done')
+                    print('The Snake:', self.oSnake)
                     del self.oSnake
+                    self.oSnake = Snake(self.oApple, self.window)
+                    print('The Snake deleted?:', self.oSnake)
                     self.oSnake = Snake(self.oApple, self.window)
                     self.oApple = Apple()
                     break
