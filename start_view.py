@@ -1,5 +1,3 @@
-
-
 import pygame
 from constants import *
 
@@ -14,7 +12,7 @@ class StartView():
         self.degrees1 = 0
 
     def draw(self):
-        self.window.fill(BG_COLOR)
+        self.window.fill(BACKGROUND)
 
         theRect = self.titleSurf1.get_rect()
         theRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)

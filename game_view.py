@@ -1,10 +1,7 @@
-
-
-import sys
-import pygame
+import sys, pygame
 from constants import *
 from snake import Snake
-from apple import *
+from apple import Apple
 
 
 class GameView():
@@ -46,10 +43,10 @@ class GameView():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                elif event.type == pygame.KEYDOWN:
+                if event.type == pygame.KEYDOWN:
                     self.handleKeys(event)
 
-            self.window.fill(BG_COLOR)
+            self.window.fill(BACKGROUND)
             self.oSnake.update()
 
             for x in range(0, WINDOW_WIDTH, CELLSIZE):  # draw vertical lines
@@ -69,10 +66,9 @@ class GameView():
             pygame.display.update()
             self.clock.tick(FRAMES_PER_SECOND)
 
-            q = self.checkGameOver()
+            gameStatus = self.checkGameOver()
 
-            if q == "Reset Game":
+            if gameStatus == "Reset Game":
                 del self.oSnake
                 self.oSnake = Snake(self.window, self.oApple)
                 return 2
-                # break

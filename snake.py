@@ -1,9 +1,6 @@
-
-
 import pygame
 import random
 from constants import *
-from apple import *
 
 
 class Snake():
