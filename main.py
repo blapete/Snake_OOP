@@ -24,8 +24,6 @@ while True:
         elif event.type == pygame.KEYDOWN:
             oController.handleEvent(event)
 
-        # print(event)
-
     oController.draw()
 
     pygame.display.update()

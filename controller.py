@@ -34,11 +34,12 @@ class Controller():
         if self.STATE == 0:
             self.STATE += 1
 
-        if self.STATE == 0:
-            pass
+        if self.STATE == 1:
+            self.oGameView.handleKeys(event)
 
         if self.STATE == 2:
-            pass
+            self.oGameView.STATE = 1
+            self.STATE -=2
 
         
     def draw(self):
@@ -47,7 +48,8 @@ class Controller():
             self.oStartView.draw()
 
         if self.STATE == 1:
-            self.STATE = self.oGameView.draw()
+            self.oGameView.draw()
+            self.STATE = self.oGameView.STATE
 
         if self.STATE == 2:
             self.oEndView.draw()
