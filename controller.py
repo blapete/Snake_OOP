@@ -27,19 +27,19 @@ class Controller():
 
     def handleEvent(self, event):
 
+        if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+
         if self.STATE == 0:
-            if event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                sys.exit()
-            else:
-                self.STATE = 1
+            self.STATE += 1
+
+        if self.STATE == 0:
+            pass
 
         if self.STATE == 2:
-            if event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                sys.exit()
-            else:
-                self.STATE = 0
+            pass
+
         
     def draw(self):
 
