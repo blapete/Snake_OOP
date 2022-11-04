@@ -21,8 +21,8 @@ class Controller():
         self.oGameView = GameView(self.window, self.font, self.oScore)
         self.oEndView = EndView(self.window, self.font)
 
-        # State
-        self.STATE = 0
+        # Default Start View
+        self.oView = self.oStartView
 
     def handleEvent(self, event):
 
@@ -30,25 +30,22 @@ class Controller():
             pygame.quit()
             sys.exit()
 
-        if self.STATE == 0:
-            self.STATE += 1
+        if self.oView == self.oStartView:
+            self.oView = self.oGameView
 
-        if self.STATE == 1:
-            self.oGameView.handleKeys(event)
+        if self.oView == self.oGameView:
+            self.oView.handleKeys(event)
 
-        if self.STATE == 2:
-            self.oGameView.STATE = 1
-            self.STATE -=2
+        if self.oView == self.oEndView:
+            self.oView = self.oStartView
+
+    # def pressToPlayMessage():
+
 
         
     def draw(self):
 
-        if self.STATE == 0:
-            self.oStartView.draw()
+        self.window.fill(BACKGROUND)
 
-        if self.STATE == 1:
-            self.oGameView.draw()
-            self.STATE = self.oGameView.STATE
-
-        if self.STATE == 2:
-            self.oEndView.draw()
+        if not self.oView.draw():
+            self.oView = self.oEndView

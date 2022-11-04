@@ -15,7 +15,8 @@ class EndView():
         self.window.blit(pressKeySurf, pressKeyRect)
 
     def draw(self):
-        font = pygame.font.Font('freesansbold.ttf', 150)
+
+        font = pygame.font.Font('freesansbold.ttf', 50)
         game = font.render('Game', True, WHITE)
         over = font.render('Over', True, WHITE)
         gameRect = game.get_rect()
@@ -24,4 +25,5 @@ class EndView():
         overRect.midtop = (WINDOW_WIDTH / 2, gameRect.height + 10 + 25)
         self.window.blit(game, gameRect)
         self.window.blit(over, overRect)
+        
         self.pressKeyMessage()

@@ -40,8 +40,6 @@ class GameView():
 
     def draw(self):
 
-        self.window.fill(BACKGROUND)
-
         self.oSnake.update()
 
         for x in range(0, WINDOW_WIDTH, CELLSIZE):  # draw vertical lines
@@ -59,9 +57,18 @@ class GameView():
         z = len(self.oSnake.snakeCoordinates) - 3
         self.oScore.draw(self.window, self.font, z)
 
+        # if self.checkGameOver():
+        #     del self.oSnake
+        #     del self.oSnake
+        #     self.oSnake = Snake(self.window, self.oApple)
+        #     return False
+
         gameStatus = self.checkGameOver()
 
         if gameStatus == "Reset Game":
             del self.oSnake
             self.oSnake = Snake(self.window, self.oApple)
             self.STATE = 2
+            return False
+        else:
+            return True

@@ -12,6 +12,7 @@ class Snake():
     HEAD = 0
 
     def __init__(self, window, oApple):
+        
         self.x = random.randint(5, CELLWIDTH - 6)
         self.y = random.randint(5, CELLHEIGHT - 6)
         self.direction = self.RIGHT
@@ -20,6 +21,7 @@ class Snake():
         self.window = window
 
     def update(self):
+
         if self.snakeCoordinates[self.HEAD]['x'] == self.oApple.x and self.snakeCoordinates[self.HEAD]['y'] == self.oApple.y:
             self.oApple.setNewLocation()
         else:
@@ -35,6 +37,7 @@ class Snake():
         self.snakeCoordinates.insert(0, newHead)
 
     def draw(self, window):
+
         for coord in self.snakeCoordinates:
             x = coord['x'] * CELLSIZE
             y = coord['y'] * CELLSIZE
