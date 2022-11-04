@@ -4,15 +4,12 @@ from constants import *
 
 class EndView():
 
-    def __init__(self, window, font):
+    def __init__(self, window, font, message):
+        
         self.window = window
         self.font = font
+        self.message = message
 
-    def pressKeyMessage(self):
-        pressKeySurf = self.font.render('Press a key to play.', True, DARKGRAY)
-        pressKeyRect = pressKeySurf.get_rect()
-        pressKeyRect.topleft = (WINDOW_WIDTH - 200, WINDOW_HEIGHT - 30)
-        self.window.blit(pressKeySurf, pressKeyRect)
 
     def draw(self):
 
@@ -26,4 +23,4 @@ class EndView():
         self.window.blit(game, gameRect)
         self.window.blit(over, overRect)
         
-        self.pressKeyMessage()
+        self.message()

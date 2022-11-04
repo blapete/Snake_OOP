@@ -12,14 +12,15 @@ class Controller():
         
         self.window = window
         self.font = font
+        self.message = self.pressToPlayMessage
 
         # Model
         self.oScore = Model()
 
         # Views
-        self.oStartView = StartView(self.window, self.font)
+        self.oStartView = StartView(self.window, self.font, self.message)
         self.oGameView = GameView(self.window, self.font, self.oScore)
-        self.oEndView = EndView(self.window, self.font)
+        self.oEndView = EndView(self.window, self.font, self.message)
 
         # Default Start View
         self.oView = self.oStartView
@@ -39,10 +40,13 @@ class Controller():
         if self.oView == self.oEndView:
             self.oView = self.oStartView
 
-    # def pressToPlayMessage():
+    def pressToPlayMessage(self):
 
+        messageSurface = self.font.render('Press a key to play.', True, DARKGRAY)
+        messageRect = messageSurface.get_rect()
+        messageRect.topleft = (WINDOW_WIDTH - 200, WINDOW_HEIGHT - 30)
+        self.window.blit(messageSurface, messageRect)
 
-        
     def draw(self):
 
         self.window.fill(BACKGROUND)
