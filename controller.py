@@ -15,14 +15,14 @@ class Controller():
         self.message = self.pressToPlayMessage
 
         # Model
-        self.oScore = Model()
+        self.oModel = Model()
 
         # Views
-        self.oStartView = StartView(self.window, self.font, self.message)
-        self.oGameView = GameView(self.window, self.font, self.oScore)
-        self.oEndView = EndView(self.window, self.font, self.message)
+        self.oStartView = StartView(self.window, self.message)
+        self.oGameView = GameView(self.window, self.font, self.oModel)
+        self.oEndView = EndView(self.window, self.message)
 
-        # Default Start View
+        # Default Start View - "controller object's state"
         self.oView = self.oStartView
 
     def handleEvent(self, event):

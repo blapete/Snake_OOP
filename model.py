@@ -13,4 +13,5 @@ class Model():
         scoreSurface = font.render('Score: %s' % (score), True, WHITE)
         scoreRect = scoreSurface.get_rect()
         scoreRect.topleft = (WINDOW_WIDTH - 120, 10)
+        
         window.blit(scoreSurface, scoreRect)

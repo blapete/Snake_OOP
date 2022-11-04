@@ -12,14 +12,15 @@ class Snake():
     HEAD = 0
 
     def __init__(self, window, oApple):
+
+        self.window = window
+        self.oApple = oApple
         
         self.x = random.randint(5, CELLWIDTH - 6)
         self.y = random.randint(5, CELLHEIGHT - 6)
         self.direction = self.RIGHT
         self.snakeCoordinates = [{'x': self.x, 'y': self.y},{'x': self.x - 1, 'y': self.y}, {'x': self.x - 2, 'y': self.y}]
-        self.oApple = oApple
-        self.window = window
-
+        
     def update(self):
 
         if self.snakeCoordinates[self.HEAD]['x'] == self.oApple.x and self.snakeCoordinates[self.HEAD]['y'] == self.oApple.y:
@@ -39,9 +40,12 @@ class Snake():
     def draw(self, window):
 
         for coord in self.snakeCoordinates:
+
             x = coord['x'] * CELLSIZE
             y = coord['y'] * CELLSIZE
+
             wormSegmentRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
             pygame.draw.rect(self.window, DARKGREEN, wormSegmentRect)
+            
             wormInnerSegmentRect = pygame.Rect(x + 4, y + 4, CELLSIZE - 8, CELLSIZE - 8)
             pygame.draw.rect(self.window, GREEN, wormInnerSegmentRect)

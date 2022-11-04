@@ -6,11 +6,11 @@ from apple import Apple
 
 class GameView():
 
-    def __init__(self, window, font, score):
+    def __init__(self, window, font, oModel):
         self.window = window
         self.oApple = Apple()
         self.oSnake = Snake(self.window, self.oApple)
-        self.oScore = score
+        self.oModel = oModel
         self.font = font
         self.STATE = 1
 
@@ -55,13 +55,7 @@ class GameView():
         self.oSnake.oApple.draw(self.window, x, y)
 
         z = len(self.oSnake.snakeCoordinates) - 3
-        self.oScore.draw(self.window, self.font, z)
-
-        # if self.checkGameOver():
-        #     del self.oSnake
-        #     del self.oSnake
-        #     self.oSnake = Snake(self.window, self.oApple)
-        #     return False
+        self.oModel.draw(self.window, self.font, z)
 
         gameStatus = self.checkGameOver()
 
