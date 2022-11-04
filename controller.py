@@ -8,10 +8,9 @@ from end_view import EndView
 
 class Controller():
     
-    def __init__(self, window, clock, font):
+    def __init__(self, window, font):
         
         self.window = window
-        self.clock = clock
         self.font = font
 
         # Model
@@ -19,7 +18,7 @@ class Controller():
 
         # Views
         self.oStartView = StartView(self.window, self.font)
-        self.oGameView = GameView(self.window, self.font, self.clock, self.oScore)
+        self.oGameView = GameView(self.window, self.font, self.oScore)
         self.oEndView = EndView(self.window, self.font)
 
         # State

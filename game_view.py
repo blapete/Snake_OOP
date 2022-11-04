@@ -6,9 +6,8 @@ from apple import Apple
 
 class GameView():
 
-    def __init__(self, window, font, clock, score):
+    def __init__(self, window, font, score):
         self.window = window
-        self.clock = clock
         self.oApple = Apple()
         self.oSnake = Snake(self.window, self.oApple)
         self.oScore = score
