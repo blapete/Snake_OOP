@@ -11,17 +11,13 @@ class EndView():
 
     def draw(self):
 
-        endFont = pygame.font.Font('freesansbold.ttf', 50)
+        endFont = pygame.font.Font('freesansbold.ttf', 70)
 
-        gameSurface = endFont.render('Game', True, WHITE)
-        gameRect = gameSurface.get_rect()
-        gameRect.midtop = (WINDOW_WIDTH / 2, 10)
+        gameOverSurface = endFont.render('Game Over', True, WHITE)
+        gameOverRect = gameOverSurface.get_rect()
+        gameOverRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
 
-        overSurface = endFont.render('Over', True, WHITE)
-        overRect = overSurface.get_rect()
-        overRect.midtop = (WINDOW_WIDTH / 2, gameRect.height + 10 + 25)
-
-        self.window.blit(gameSurface, gameRect)
-        self.window.blit(overSurface, overRect)
+        self.window.blit(gameOverSurface, gameOverRect)
         
         self.message()
+

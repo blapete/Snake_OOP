@@ -8,7 +8,7 @@ pygame.init()
 clock = pygame.time.Clock()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Snake game')
-GAME_FONT = pygame.font.Font('freesansbold.ttf', 18)
+GAME_FONT = pygame.font.Font('freesansbold.ttf', 14)
 
 
 oController = Controller(window, GAME_FONT)

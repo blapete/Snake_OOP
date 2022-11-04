@@ -11,9 +11,9 @@ class StartView():
 
     def draw(self):
 
-        titleFont = pygame.font.Font('freesansbold.ttf', 50)
+        titleFont = pygame.font.Font('freesansbold.ttf', 40)
 
-        titleSurface = titleFont.render('Snake game', True, WHITE)
+        titleSurface = titleFont.render('The Snake Game', True, WHITE)
         titleRect = titleSurface.get_rect()
         titleRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
 

@@ -42,7 +42,7 @@ class Controller():
 
     def pressToPlayMessage(self):
 
-        messageSurface = self.font.render('Press a key to play.', True, DARKGRAY)
+        messageSurface = self.font.render('Press a key..', True, WHITE)
         messageRect = messageSurface.get_rect()
         messageRect.topleft = (WINDOW_WIDTH - 200, WINDOW_HEIGHT - 30)
         self.window.blit(messageSurface, messageRect)
