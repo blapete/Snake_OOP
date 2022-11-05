@@ -1,8 +1,10 @@
 # Snake_OOP
-practice repo - 
+Practice repo :
 
-Implementing a DRY (don't repreat yourself) and model view controller design : )
+- model view controller
+- don't repeat yourself
+- object-oriented programming
 
 Irv Kalb taught me how to MVC a pygame
 
-The game code is my own
+The game code is mine
