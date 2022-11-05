@@ -39,7 +39,7 @@ class Controller():
             self.oView = self.oGameView
 
         if self.oView == self.oGameView:
-            self.oView.change_direction(event)
+            self.oView.change_direction(event)      # Fix # 1
 
         if self.oView == self.oEndView:
             self.oView = self.oStartView
@@ -54,6 +54,6 @@ class Controller():
     def draw(self):
 
         self.window.fill(BACKGROUND_COLOR)
-
+                                                    # Fix # 2
         if not self.oView.draw():
             self.oView = self.oEndView

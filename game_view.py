@@ -72,6 +72,7 @@ class GameView():
             del self.oSnake
             self.oSnake = Snake(self.oFood)
             self.oSnake.oFood.generateNewFoodObject()
+            
             return False
 
         if self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] == self.oFood.x and self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] == self.oFood.y:

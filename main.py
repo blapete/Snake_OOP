@@ -9,8 +9,9 @@ FRAMES_PER_SECOND = 12
 # Initialize pygame
 pygame.init()
 clock = pygame.time.Clock()
-window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Snake game')
+window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+
 
 # Variables
 oController = Controller(window)
