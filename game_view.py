@@ -13,7 +13,7 @@ class GameView():
         self.oModel = oModel
 
         self.oFood = Food()
-        self.oSnake = Snake(self.window, self.oFood)
+        self.oSnake = Snake(self.oFood)
         
         self.STATE = 1
 
@@ -57,7 +57,16 @@ class GameView():
             pygame.draw.line(self.window, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
 
         # Draw Snake
-        self.oSnake.draw(self.window)
+        for coord in self.oSnake.snakeCoordinates:
+
+            x = coord['x'] * CELLSIZE
+            y = coord['y'] * CELLSIZE
+
+            snakeSegmentRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
+            pygame.draw.rect(self.window, DARKGREEN, snakeSegmentRect)
+
+            snakeInnerSegmentRect = pygame.Rect(x + 4, y + 4, CELLSIZE - 8, CELLSIZE - 8)
+            pygame.draw.rect(self.window, GREEN, snakeInnerSegmentRect)
 
         # Draw Food
         x = self.oSnake.oFood.x * CELLSIZE
@@ -72,7 +81,7 @@ class GameView():
 
         if gameStatus == "Reset Game":
             del self.oSnake
-            self.oSnake = Snake(self.window, self.oFood)
+            self.oSnake = Snake(self.oFood)
             self.STATE = 2
             return False
         else:

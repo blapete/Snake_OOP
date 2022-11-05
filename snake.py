@@ -11,9 +11,8 @@ class Snake():
     RIGHT = 'right'
     HEAD = 0
 
-    def __init__(self, window, oFood):
+    def __init__(self, oFood):
 
-        self.window = window
         self.oFood = oFood
         
         self.x = random.randint(5, CELLWIDTH - 6)
@@ -36,16 +35,3 @@ class Snake():
         elif self.direction == self.RIGHT:
             newHead = {'x': self.snakeCoordinates[self.HEAD]['x'] + 1, 'y': self.snakeCoordinates[self.HEAD]['y']}
         self.snakeCoordinates.insert(0, newHead)
-
-    def draw(self, window):
-
-        for coord in self.snakeCoordinates:
-
-            x = coord['x'] * CELLSIZE
-            y = coord['y'] * CELLSIZE
-
-            wormSegmentRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
-            pygame.draw.rect(self.window, DARKGREEN, wormSegmentRect)
-            
-            wormInnerSegmentRect = pygame.Rect(x + 4, y + 4, CELLSIZE - 8, CELLSIZE - 8)
-            pygame.draw.rect(self.window, GREEN, wormInnerSegmentRect)

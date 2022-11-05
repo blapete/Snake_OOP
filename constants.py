@@ -1,3 +1,6 @@
+
+# Constants file
+
 WINDOW_WIDTH = 640
 WINDOW_HEIGHT = 480
 CELLSIZE = 20
@@ -14,5 +17,3 @@ RED = (255,   0,   0)
 DARKGREEN = (0, 155,   0)
 GREEN = (0, 255,   0)
 WHITE = (255, 255, 255)
-
-BACKGROUND = BLACK

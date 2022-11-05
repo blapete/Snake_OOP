@@ -11,13 +11,13 @@ class StartView():
 
     def draw(self):
 
-        titleFont = pygame.font.Font('freesansbold.ttf', 40)
+        startFont = pygame.font.Font('freesansbold.ttf', 40)
 
-        titleSurface = titleFont.render('The Snake Game', True, WHITE)
-        titleRect = titleSurface.get_rect()
-        titleRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
+        snakeGameSurface = startFont.render('The Snake Game', True, WHITE)
+        snakeGameRect = snakeGameSurface.get_rect()
+        snakeGameRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
 
-        self.window.blit(titleSurface, titleRect)
+        self.window.blit(snakeGameSurface, snakeGameRect)
 
         self.message()
 
