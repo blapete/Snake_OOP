@@ -1,8 +1,3 @@
-import pygame
-import random
-from constants import *
-
-
 class Snake():
 
     UP = 'up'

@@ -1,7 +1,4 @@
-import pygame
-from constants import *
-
-
+# Game Data
 class Model():
 
     def __init__(self):

@@ -1,4 +1,4 @@
-
+# Packagaes
 import sys, pygame
 from constants import *
 from model import Model
@@ -9,6 +9,7 @@ from end_view import EndView
 
 BACKGROUND_COLOR = BLACK
 
+# Handles user input events
 class Controller():
     
     def __init__(self, window):
