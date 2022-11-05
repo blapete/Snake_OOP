@@ -21,4 +21,4 @@ class StartView():
 
         self.message()
 
-        return True
+        return 0

@@ -20,3 +20,5 @@ class EndView():
         self.window.blit(gameOverSurface, gameOverRect)
         
         self.message()
+
+        return 0

@@ -73,7 +73,7 @@ class GameView():
             self.oSnake = Snake(self.oFood)
             self.oSnake.oFood.generateNewFoodObject()
             
-            return False
+            return 2
 
         if self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] == self.oFood.x and self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] == self.oFood.y:
             self.oFood.generateNewFoodObject()
@@ -101,10 +101,10 @@ class GameView():
         for y in range(0, WINDOW_HEIGHT, CELLSIZE):
             pygame.draw.line(self.window, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
 
-        self.draw_score()
+        self.draw_snake()
 
         self.draw_food()
 
-        self.draw_snake()
+        self.draw_score()
 
-        return True
+        return 1
