@@ -39,7 +39,7 @@ class Controller():
             self.oView = self.oGameView
 
         if self.oView == self.oGameView:
-            self.oView.handleKeys(event)
+            self.oView.change_direction(event)
 
         if self.oView == self.oEndView:
             self.oView = self.oStartView

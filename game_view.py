@@ -15,19 +15,19 @@ class GameView():
         self.oFood = Food()
         self.oSnake = Snake(self.oFood)
 
-    def checkGameOver(self):
+    def game_over(self):
 
         if (self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] == -1 or 
             self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] == CELLWIDTH or 
             self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] == -1 or 
             self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] == CELLHEIGHT):
-            return "Reset Game"
+            return True
 
         for snakeBody in self.oSnake.snakeCoordinates[1:]:
             if snakeBody['x'] == self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] and snakeBody['y'] == self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y']:
-                return "Reset Game"
+                return True
 
-    def handleKeys(self, event):
+    def change_direction(self, event):
 
         if (event.key == pygame.K_LEFT) and self.oSnake.direction != self.oSnake.RIGHT:
             self.oSnake.direction = self.oSnake.LEFT
@@ -37,6 +37,21 @@ class GameView():
             self.oSnake.direction = self.oSnake.UP
         elif (event.key == pygame.K_DOWN) and self.oSnake.direction != self.oSnake.UP:
             self.oSnake.direction = self.oSnake.DOWN
+
+    def draw_score(self):
+
+        currentScore = self.oModel.getScore() # getter
+        scoreSurface = self.font.render('Score: %s' % (currentScore), True, WHITE)
+        scoreRect = scoreSurface.get_rect()
+        scoreRect.topleft = (WINDOW_WIDTH - 120, 10)
+        self.window.blit(scoreSurface, scoreRect)
+
+    def draw_food(self):
+
+        x = self.oSnake.oFood.x * CELLSIZE
+        y = self.oSnake.oFood.y * CELLSIZE
+        foodRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
+        pygame.draw.rect(self.window, RED, foodRect)
 
     def draw_snake(self):
 
@@ -51,22 +66,13 @@ class GameView():
             snakeInnerSegmentRect = pygame.Rect(x + 4, y + 4, CELLSIZE - 8, CELLSIZE - 8)
             pygame.draw.rect(self.window, GREEN, snakeInnerSegmentRect)
 
-    def draw_food(self):
-
-        x = self.oSnake.oFood.x * CELLSIZE
-        y = self.oSnake.oFood.y * CELLSIZE
-        foodRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
-        pygame.draw.rect(self.window, RED, foodRect)
-
-    def draw_score(self):
-
-        currentScore = self.oModel.getScore() # getter
-        scoreSurface = self.font.render('Score: %s' % (currentScore), True, WHITE)
-        scoreRect = scoreSurface.get_rect()
-        scoreRect.topleft = (WINDOW_WIDTH - 120, 10)
-        self.window.blit(scoreSurface, scoreRect)
-
     def draw(self):
+
+        if self.game_over():
+            del self.oSnake
+            self.oSnake = Snake(self.oFood)
+            self.oSnake.oFood.generateNewFoodObject()
+            return False
 
         if self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] == self.oFood.x and self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] == self.oFood.y:
             self.oFood.generateNewFoodObject()
@@ -85,7 +91,7 @@ class GameView():
         self.oSnake.snakeCoordinates.insert(0, newHead)
 
         currentScore = len(self.oSnake.snakeCoordinates) - 3
-        self.oModel.setScore(currentScore)
+        self.oModel.setScore(currentScore) # setter
 
         # Draw game window
         for x in range(0, WINDOW_WIDTH, CELLSIZE):
@@ -94,18 +100,10 @@ class GameView():
         for y in range(0, WINDOW_HEIGHT, CELLSIZE):
             pygame.draw.line(self.window, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
 
-        self.draw_snake()
+        self.draw_score()
 
         self.draw_food()
 
-        self.draw_score()
+        self.draw_snake()
 
-        gameStatus = self.checkGameOver()
-
-        if gameStatus == "Reset Game":
-            del self.oSnake
-            self.oSnake = Snake(self.oFood)
-            self.STATE = 2
-            return False
-        else:
-            return True
+        return True
