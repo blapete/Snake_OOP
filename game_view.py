@@ -1,17 +1,20 @@
 import sys, pygame
 from constants import *
 from snake import Snake
-from apple import Apple
+from food import Food
 
 
 class GameView():
 
     def __init__(self, window, font, oModel):
+
         self.window = window
-        self.oApple = Apple()
-        self.oSnake = Snake(self.window, self.oApple)
-        self.oModel = oModel
         self.font = font
+        self.oModel = oModel
+
+        self.oFood = Food()
+        self.oSnake = Snake(self.window, self.oFood)
+        
         self.STATE = 1
 
     def checkGameOver(self):
@@ -40,19 +43,27 @@ class GameView():
 
     def draw(self):
 
+        '''
+        Draw game window, snake, apple
+        '''
+
         self.oSnake.update()
 
+        # Draw game window
         for x in range(0, WINDOW_WIDTH, CELLSIZE):  # draw vertical lines
             pygame.draw.line(self.window, DARKGRAY, (x, 0), (x, WINDOW_HEIGHT))
 
         for y in range(0, WINDOW_HEIGHT, CELLSIZE):  # draw horizontal lines
             pygame.draw.line(self.window, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
 
+        # Draw Snake
         self.oSnake.draw(self.window)
 
-        x = self.oSnake.oApple.x * CELLSIZE
-        y = self.oSnake.oApple.y * CELLSIZE
-        self.oSnake.oApple.draw(self.window, x, y)
+        # Draw Food
+        x = self.oSnake.oFood.x * CELLSIZE
+        y = self.oSnake.oFood.y * CELLSIZE
+        foodRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
+        pygame.draw.rect(self.window, RED, foodRect)
 
         z = len(self.oSnake.snakeCoordinates) - 3
         self.oModel.draw(self.window, self.font, z)
@@ -61,7 +72,7 @@ class GameView():
 
         if gameStatus == "Reset Game":
             del self.oSnake
-            self.oSnake = Snake(self.window, self.oApple)
+            self.oSnake = Snake(self.window, self.oFood)
             self.STATE = 2
             return False
         else:

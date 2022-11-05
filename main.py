@@ -1,21 +1,26 @@
+
+# Packages
 import sys, pygame
 from constants import *
-from model import *
-from controller import *
+from controller import Controller
 
+# Constants
+FRAMES_PER_SECOND = 12
 
+# Initialize pygame
 pygame.init()
 clock = pygame.time.Clock()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption('Snake game')
-GAME_FONT = pygame.font.Font('freesansbold.ttf', 14)
+
+# Variables
+oController = Controller(window)
 
 
-oController = Controller(window, GAME_FONT)
-
-
+# Infinite loop
 while True:
     
+    # Event check
     for event in pygame.event.get():
        
         if event.type == pygame.QUIT:
@@ -24,8 +29,11 @@ while True:
         elif event.type == pygame.KEYDOWN:
             oController.handleEvent(event)
 
+    # Draw window element
     oController.draw()
 
+    # Update the window
     pygame.display.update()
 
+    # Control game speed
     clock.tick(FRAMES_PER_SECOND)

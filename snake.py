@@ -11,10 +11,10 @@ class Snake():
     RIGHT = 'right'
     HEAD = 0
 
-    def __init__(self, window, oApple):
+    def __init__(self, window, oFood):
 
         self.window = window
-        self.oApple = oApple
+        self.oFood = oFood
         
         self.x = random.randint(5, CELLWIDTH - 6)
         self.y = random.randint(5, CELLHEIGHT - 6)
@@ -23,8 +23,8 @@ class Snake():
         
     def update(self):
 
-        if self.snakeCoordinates[self.HEAD]['x'] == self.oApple.x and self.snakeCoordinates[self.HEAD]['y'] == self.oApple.y:
-            self.oApple.setNewLocation()
+        if self.snakeCoordinates[self.HEAD]['x'] == self.oFood.x and self.snakeCoordinates[self.HEAD]['y'] == self.oFood.y:
+            self.oFood.generateNewFoodObject()
         else:
             del self.snakeCoordinates[-1] 
         if self.direction == self.UP:

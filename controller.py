@@ -6,12 +6,14 @@ from game_view import GameView
 from end_view import EndView
 
 
+# GAME_FONT = pygame.font.Font('freesansbold.ttf', 14)
+
 class Controller():
     
-    def __init__(self, window, font):
+    def __init__(self, window):
         
         self.window = window
-        self.font = font
+        self.font = pygame.font.Font('freesansbold.ttf', 14)
         self.message = self.pressToPlayMessage
 
         # Model
