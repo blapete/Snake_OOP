@@ -41,13 +41,31 @@ class GameView():
             pygame.quit()
             sys.exit()
 
+    def update(self):
+
+        if self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] == self.oFood.x and self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] == self.oFood.y:
+            self.oFood.generateNewFoodObject()
+        else:
+            del self.oSnake.snakeCoordinates[-1]
+
+        if self.oSnake.direction == self.oSnake.UP:
+            newHead = {'x': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'],'y': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] - 1}
+        elif self.oSnake.direction == self.oSnake.DOWN:
+            newHead = {'x': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'], 'y': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y'] + 1}
+        elif self.oSnake.direction == self.oSnake.LEFT:
+            newHead = {'x': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] - 1, 'y': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y']}
+        elif self.oSnake.direction == self.oSnake.RIGHT:
+            newHead = {'x': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['x'] + 1, 'y': self.oSnake.snakeCoordinates[self.oSnake.HEAD]['y']}
+
+        self.oSnake.snakeCoordinates.insert(0, newHead)
+
     def draw(self):
 
         '''
-        Draw game window, snake, apple
+        Draw game window, snake, food, score
         '''
 
-        self.oSnake.update()
+        self.update()
 
         # Draw game window
         for x in range(0, WINDOW_WIDTH, CELLSIZE):  # draw vertical lines
@@ -74,8 +92,14 @@ class GameView():
         foodRect = pygame.Rect(x, y, CELLSIZE, CELLSIZE)
         pygame.draw.rect(self.window, RED, foodRect)
 
+
+        # Draw Score
         z = len(self.oSnake.snakeCoordinates) - 3
-        self.oModel.draw(self.window, self.font, z)
+        scoreSurface = self.font.render('Score: %s' % (z), True, WHITE)
+        scoreRect = scoreSurface.get_rect()
+        scoreRect.topleft = (WINDOW_WIDTH - 120, 10)
+        
+        self.window.blit(scoreSurface, scoreRect)
 
         gameStatus = self.checkGameOver()
 
