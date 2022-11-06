@@ -8,3 +8,8 @@ Practice repo :
 <br>
 
 <img src="snake_OOP.gif" width="320" height="240"/>
+
+
+<br>
+
+![Alt Text](snake_OOP.gif)
