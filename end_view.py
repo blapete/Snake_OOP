@@ -8,7 +8,7 @@ class EndView():
         
         self.window = window
         self.message = message
-        # self.STATE = 0
+        self.STATE = 0
 
     def draw(self):
 
@@ -19,18 +19,14 @@ class EndView():
         for y in range(0, WINDOW_HEIGHT, CELLSIZE):
             pygame.draw.line(self.window, DARKGRAY, (0, y), (WINDOW_WIDTH, y))
 
-        endFont = pygame.font.Font('freesansbold.ttf', 65)
+        endFont = pygame.font.Font('freesansbold.ttf', 75)
 
         gameOverSurface = endFont.render('Game Over', True, WHITE)
         gameOverRect = gameOverSurface.get_rect()
         gameOverRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
 
         self.window.blit(gameOverSurface, gameOverRect)
-   
-        # if self.STATE != 0:
-        #     pygame.time.delay(500)
-        #     self.message()
 
-        # self.STATE = 1
-
+        self.message()
+        
         return 2
