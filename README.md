@@ -7,4 +7,4 @@ Practice repo :
 
 <br>
 
-[View the Game](https://github.com/blapete/Snake_OOP/blob/main/Snake_OOP.gif)
+View Snake_OOP.gif to see the game
