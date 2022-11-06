@@ -8,6 +8,7 @@ class EndView():
         
         self.window = window
         self.message = message
+        # self.STATE = 0
 
     def draw(self):
 
@@ -25,7 +26,11 @@ class EndView():
         gameOverRect.center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
 
         self.window.blit(gameOverSurface, gameOverRect)
-        
-        self.message()
+   
+        # if self.STATE != 0:
+        #     pygame.time.delay(500)
+        #     self.message()
+
+        # self.STATE = 1
 
         return 2
