@@ -7,9 +7,4 @@ Practice repo :
 
 <br>
 
-<img src="snake_OOP.gif" width="320" height="240"/>
-
-
-<br>
-
-![Alt Text](snake_OOP.gif)
+[View the Game](https://github.com/blapete/Snake_OOP/blob/main/Snake_OOP.gif)
