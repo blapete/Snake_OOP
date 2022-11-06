@@ -1,7 +1,8 @@
 # Packages
 import sys, pygame
+from Controller.controller import Controller
 from constants import *
-from controller import Controller
+
 
 # Constants
 FRAMES_PER_SECOND = 12

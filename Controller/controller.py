@@ -1,9 +1,9 @@
 import sys, pygame
 from constants import *
-from model import Model
-from start_view import StartView
-from game_view import GameView
-from end_view import EndView
+from Model.model import Model
+from Views.start_view import StartView
+from Views.game_view import GameView
+from Views.end_view import EndView
 
 
 BACKGROUND_COLOR = BLACK
