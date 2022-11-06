@@ -94,7 +94,7 @@ class GameView():
         currentScore = len(self.oSnake.snakeCoordinates) - 3
         self.oModel.setScore(currentScore) # setter
 
-        # Draw game window
+        # Draw grid
         for x in range(0, WINDOW_WIDTH, CELLSIZE):
             pygame.draw.line(self.window, DARKGRAY, (x, 0), (x, WINDOW_HEIGHT))
 

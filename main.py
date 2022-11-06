@@ -29,6 +29,9 @@ while True:
         elif event.type == pygame.KEYDOWN:
             oController.handleEvent(event)
 
+    # Clear the window
+    window.fill(BLACK)
+
     # Draw window element
     oController.draw()
 

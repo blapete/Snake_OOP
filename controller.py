@@ -12,7 +12,7 @@ BACKGROUND_COLOR = BLACK
 class Controller():
     
     def __init__(self, window):
-        
+
         self.window = window
         self.font = pygame.font.Font('freesansbold.ttf', 14)
         self.message = self.pressToPlayMessage
@@ -35,6 +35,7 @@ class Controller():
     def change_view(self):
         self.current_view = 1 if self.oView == self.oStartView else 0 if self.oView == self.oEndView else 2
         self.oView = self.oViewArray[self.current_view]
+        print('test')
         
 
     def handleEvent(self, event):
@@ -58,6 +59,54 @@ class Controller():
 
     def draw(self):
 
-        self.window.fill(BACKGROUND_COLOR)
+            # print('1') if self.window.fill(BACKGROUND_COLOR) and self.oView.draw() != 2 else self.change_view() and self.oView.draw()
 
-        True if self.oView.draw() != 2 else self.change_view()
+            # self.window.fill(BACKGROUND_COLOR) and self.oView.draw() if self.current_view != 2 else self.change_view() and self.oView.draw()
+
+            # if self.current_view == 0 or self.current_view == 1:
+            # self.window.fill(BACKGROUND_COLOR)
+
+            # self.window.fill(BLACK)
+
+
+            self.current_view = self.oView.draw()
+
+
+            if self.current_view == 2 and self.oView == self.oGameView:
+                self.change_view()
+                self.oView.draw()
+                # print(self.oView)
+
+
+
+
+
+
+
+
+
+            #     self.current_view = self.oView.draw()
+            #     print(self.current_view)
+            #     if self.current_view == 2:
+            #         # print('------------------------------------------------------------------------')
+            #         self.change_view()
+            #         # pygame.quit()
+            #         # sys.exit()
+
+            # else:
+            #     print('---------------------------------------------------------------------')
+            #     pygame.time.delay(5000)
+            #     self.oView.draw()
+            
+            # self.current_view = self.oView.draw()
+
+            # if self.current_view == 2:
+            #     self.change_view()
+
+            # if current_view != 2:
+            #     self.window.fill(BACKGROUND_COLOR)
+            #     self.oView.draw()
+            # else:
+            #     self.change_view()
+            #     self.current_view = self.oView.draw()
+                
