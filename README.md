@@ -2,6 +2,6 @@
 
 DRY code
 
-<br>
 
-View Snake_OOP.gif for a demo
+
+see Snake_OOP.gif for demo
