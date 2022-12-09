@@ -1,10 +1,7 @@
-# Snake_OOP
-Practice repo :
+## the snake game for practice
 
-- model view controller
-- don't repeat yourself
-- object-oriented programming
+DRY code
 
 <br>
 
-View Snake_OOP.gif to see the game
+View Snake_OOP.gif for a demo
