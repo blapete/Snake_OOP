@@ -1,4 +1,4 @@
-## the snake game for practice
+the snake game for practice
 
 DRY code
 
